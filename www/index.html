@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html ng-app="starter">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- your app's js -->
+  <script src="js/app.js"></script>
+</head>
+<body ng-app="starter">
+
+  <ion-pane>
+    <ion-content ng-controller="LifeController">
+      <!-- team1 -->
+      <div class="team {{t1Color}}">
+        <div class="row">
+          <div class="col">
+            <p class="life t1 {{t1Color+2}}">
+              {{t1Life}}
+            </p>
+          </div>
+          <div class="col">
+          </div>
+          <div class="col col-20 col-bottom" ng-show="poison">
+            <p class="poison t1 {{t1Color}}">
+              {{t1Poison}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col icon">
+            <p class="team-icon {{t1Color}}">
+              <img src="img/icons/{{t1Icon}}.png" height="60" width="60">
+            </p>
+          </div>
+          <div class="col col-20 col-bottom" ng-show="poison">
+            <button class="button button-small-2 ion-plus-round" ng-click="setT1Poison(+1)"></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="button button-small ion-plus-round" ng-click="setT1Life(+1)"></button>
+            <button class="button button-small ion-minus-round" ng-click="setT1Life(-1)"></button>
+          </div>
+          <div class="col"></div>
+          <div class="col col-20 col-top" ng-show="poison">
+            <button class="button button-small-2 ion-minus-round" ng-click="setT1Poison(-1)"></button>
+          </div>
+        </div>
+      </div>
+      <!-- options bar -->
+      <div class="options">
+        <div class="row">
+          <button class="button options button-small col ion-ios-heart" ng-click="openLife()"></button>
+          <button class="button options button-small col ion-cube" ng-click="openRoll()"></button>
+          <button class="button options button-small col ion-record" ng-click="openCoin()"></button>
+          <button class="button options button-small col" ng-click="showPoison()"><img src="img/icons/poison2.png" height="10" width="7"></button>
+          <button class="button options button-small col ion-gear-b" ng-click="openColor()"></button>
+        </div>
+      </div>
+      <!-- team2 -->
+      <div class="team {{t2Color}}">
+        <div class="row">
+          <div class="col">
+            <button class="button button-small ion-plus-round" ng-click="setT2Life(+1)"></button>
+            <button class="button button-small ion-minus-round" ng-click="setT2Life(-1)"></button>
+          </div>
+          <div class="col"></div>
+          <div class="col col-20 col-bottom" ng-show="poison">
+            <button class="button button-small-2 ion-plus-round" ng-click="setT2Poison(+1)"></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col icon">
+            <p class="team-icon {{t2Color}}">
+              <img src="img/icons/{{t2Icon}}.png" height="60" width="60">
+            </p>
+          </div>
+          <div class="col col-20 col-top" ng-show="poison">
+            <button class="button button-small-2 ion-minus-round" ng-click="setT2Poison(-1)"></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p class="life t2 {{t2Color+2}}">
+              {{t2Life}}
+            </p>
+          </div>
+          <div class="col">
+          </div>
+          <div class="col col-20 col-bottom" ng-show="poison">
+            <p class="poison t2 {{t2Color}}">
+              {{t2Poison}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-pane>
+</body>
+
+<!-- life modal -->
+<script id="total-life.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar planeswalker">
+      <h1 class="title">Choose total</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="team">
+      <div class="row"></div>
+        <div class="row">
+          <div class="col icon">
+            <p class="team-icon {{t1Color}}">
+              <img src="img/icons/{{t1Icon}}.png" height="60" width="60">
+            </p>
+          </div>
+          <div class="col icon">
+            <p class="team-icon {{t2Color}}">
+              <img src="img/icons/{{t2Icon}}.png" height="60" width="60">
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="button button" ng-click="changeTotalLife(20)">20</button>
+        </div>
+        <div class="col">
+          <button class="button button" ng-click="changeTotalLife(30)">30</button>
+        </div>
+        <div class="col">
+          <button class="button button" ng-click="changeTotalLife(40)">40</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="button button" ng-click="changeTotalLife()">{{totalManual}}</button>
+        </div>
+        <div class="col">
+          <button class="button button-small ion-plus-round" ng-click="setTotalManual(+5)"></button>
+          <button class="button button-small ion-minus-round" ng-click="setTotalManual(-5)"></button>
+        </div>
+        <div class="col">
+          <button class="button ion-close-round" ng-click="closeLife()"></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row">
+          <div class="col icon">
+            <p class="icon planeswalker">
+              <img src="img/icons/icon-planeswalker.png" height="60" width="60">
+            </p>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<!-- roll modal -->
+<script id="roll.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar planeswalker">
+      <h1 class="title">Roll dice</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="team {{t1Color}}">
+        <div class="row">
+          <div class="col">
+            <p class="life t1 {{t1Color}}">
+              {{t1Num}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col icon" ng-show="t1RollWin">
+            <p class="team-icon {{t1Color}}">
+              <img src="img/icons/{{t1Icon}}.png" height="60" width="60">
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="button ion-refresh" ng-click="getNumber()"></button>
+        </div>
+        <div class="col">
+          <button class="button ion-close-round" ng-click="closeRoll()"></button>
+        </div>
+      </div>
+      <div class="team {{t2Color}}">
+        <div class="row">
+          <div class="col icon" ng-show="t2RollWin">
+            <p class="team-icon {{t2Color}}">
+              <img src="img/icons/{{t2Icon}}.png" height="60" width="60">
+            </p>
+          </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+          <div class="col col-bottom">
+            <p class="life t2 {{t2Color}}">
+              {{t2Num}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<!-- coin modal -->
+<script id="coin.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar planeswalker">
+      <h1 class="title">Flip coin</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="team full {{coinBackground}}">
+        <div class="row">
+          <div class="col icon">
+            <p class="coin {{coin}}" ng-click="flipCoin()">
+              <img src="img/icons/icon-{{coin}}.png" height="60" width="60">
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="button ion-refresh" ng-click="flipCoin()"></button>
+        </div>
+        <div class="col">
+          <button class="button ion-close-round" ng-click="closeCoin()"></button>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<!-- color modal -->
+<script id="color-teams.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar planeswalker">
+      <h1 class="title">Choose color</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="team {{t1Color}}">
+        <div class="row icon-button">
+          <div class="col">
+            <button class="button white" ng-click="setT1Color('white')"><img src="img/icons/icon-white.png" height="50" width="50"></button>
+          </div>
+          <div class="col">
+            <button class="button blue" ng-click="setT1Color('blue')"><img src="img/icons/icon-blue.png" height="50" width="50"></button>
+          </div>
+          <div class="col">
+            <button class="button black" ng-click="setT1Color('black')"><img src="img/icons/icon-black.png" height="50" width="50"></button>
+          </div>
+        </div>
+        <div class="row icon-button">
+          <div class="col">
+            <button class="button red" ng-click="setT1Color('red')"><img src="img/icons/icon-red.png" height="50" width="50"></button>
+          </div>
+          <div class="col">
+            <button class="button green" ng-click="setT1Color('green')"><img src="img/icons/icon-green.png" height="50" width="50"></button>
+          </div>
+          <div class="col">
+            <button class="button generic" ng-click="setT1Color('generic')"><img src="img/icons/icon-generic.png" height="50" width="50"></button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="button ion-close-round" ng-click="closeColor()"></button>
+        </div>
+      </div>
+      <div class="team {{t2Color}}">
+        <div class="row icon-button">
+          <div class="col">
+            <button class="button white" ng-click="setT2Color('white')"><img src="img/icons/icon-white.png" height="50" width="50"></button>
+          </div>
+          <div class="col">
+            <button class="button blue" ng-click="setT2Color('blue')"><img src="img/icons/icon-blue.png" height="50" width="50"></button>
+          </div>
+          <div class="col">
+            <button class="button black" ng-click="setT2Color('black')"><img src="img/icons/icon-black.png" height="50" width="50"></button>
+          </div>
+        </div>
+        <div class="row icon-button">
+          <div class="col">
+            <button class="button red" ng-click="setT2Color('red')"><img src="img/icons/icon-red.png" height="50" width="50"></button>
+          </div>
+          <div class="col">
+            <button class="button green" ng-click="setT2Color('green')"><img src="img/icons/icon-green.png" height="50" width="50"></button>
+          </div>
+          <div class="col">
+            <button class="button generic" ng-click="setT2Color('generic')"><img src="img/icons/icon-generic.png" height="50" width="50"></button>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+
+</script>
+</html>

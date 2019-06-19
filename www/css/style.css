@@ -1,0 +1,240 @@
+ion-content
+{
+    font-size: 300%;
+
+    text-align: center;
+
+    background-color: #373737;
+}
+html,
+body,
+ion-pane,
+ion-content,
+.scroll
+{
+    width: 100%;
+    height: 100%;
+}
+
+.options
+{
+    height: 12%;
+    margin: 2%;
+}
+
+.life
+{
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    padding-top: 17px;
+
+    vertical-align: bottom;
+
+    border-radius: 100%;
+}
+.poison
+{
+    font-size: 70%;
+
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    padding-top: 10px;
+
+    vertical-align: bottom;
+
+    border-radius: 100%;
+}
+
+.team
+{
+    height: 44%;
+
+    vertical-align: middle;
+}
+.team > .row
+{
+    height: 33%;
+}
+.full
+{
+    height: 75%;
+    margin-bottom: 10%;
+
+    vertical-align: middle;
+}
+.team-icon
+{
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    padding-top: 9px;
+
+    border: 1px solid #373737;
+    border-radius: 100%;
+}
+.coin
+{
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    margin-top: 33%;
+    padding-top: 9px;
+
+    vertical-align: bottom;
+
+    border: 1px solid #373737;
+    border-radius: 100%;
+}
+.icon
+{
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    /*margin-bottom: 40%;*/
+    padding-top: 10px;
+
+    vertical-align: bottom;
+
+    border-radius: 100%;
+}
+.button
+{
+    line-height: normal;
+
+    padding: 10px;
+}
+.team .row.icon-button
+{
+    height: 50%;
+}
+.button-small-2
+{
+    min-width: 20px;
+    max-width: 25px;
+    min-height: 20px;
+    max-height: 25px;
+    padding: 0 5px;
+}
+input
+{
+    margin-left: 30%;
+}
+
+/*colors class*/
+
+.white
+{
+    background-color: #c8b98c;
+}
+.blue
+{
+    background-color: #4276db;
+}
+.black
+{
+    background-color: #252323;
+}
+.red
+{
+    background-color: #a12b2b;
+}
+.green
+{
+    background-color: #225c30;
+}
+.generic
+{
+    background-color: #959a9d;
+}
+
+/*color 2*/
+.white2
+{
+    background-color: #fffcd6;
+}
+.blue2
+{
+    background-color: #aae0fa;
+}
+.black2
+{
+    background-color: #ccc2c0;
+}
+.red2
+{
+    background-color: #f9aa8f;
+}
+.green2
+{
+    background-color: #9bd3ae;
+}
+.generic2
+{
+    background-color: #cbc6c1;
+}
+.planeswalker
+{
+    font-weight: bold;
+
+    background-color: #dbe7ee;
+}
+
+.white.team
+{
+    border: 2px solid #c8b98c;
+    background-image: url('../img/landscapes/plain.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.blue.team
+{
+    border: 2px solid #4276db;
+    background-image: url('../img/landscapes/island.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.black.team
+{
+    border: 2px solid #252323;
+    background-image: url('../img/landscapes/swamp.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.red.team
+{
+    border: 2px solid #a12b2b;
+    background-image: url('../img/landscapes/mountain.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.green.team
+{
+    border: 2px solid #225c30;
+    background-image: url('../img/landscapes/forest.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.generic.team
+{
+    border: 2px solid #959a9d;
+    background-image: url('../img/landscapes/wasteland.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.planeswalker.team
+{
+    border: 2px solid #dbe7ee;
+    background-color: rgb(55, 55, 55);
+    /*background-image: url('../img/landscapes/wasteland.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;*/
+}
